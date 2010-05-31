@@ -1,0 +1,3 @@
+[submodule "node-chat"]
+	path = node-chat
+	url = git://github.com/scottgonzalez/node-chat
