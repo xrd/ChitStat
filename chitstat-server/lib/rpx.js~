@@ -1,0 +1,60 @@
+var RPX = {
+  
+    // Connect Middleware for integrating RPX Now into your application
+    RPX_LOGIN_URL : "https://rpxnow.com/api/v2/auth_info",
+    
+    OPTIONS : {
+        callback_path : '/login_completed',
+        logout_path : '/logout',
+        host : 'localhost',
+        port : '80',
+        connect_session : 'connect.session',
+        name : 'default'
+    },
+    
+    get_credentials : function(token) {
+        RPX.get_credentials(token);
+    },
+
+    check_session_for_authentication(req) {
+        req.cookies.
+    }
+
+    // This method will return to sign in with the widget.
+    login_widget_url : function(app_name) {
+        return 'https://' + RPX.app_name + '.rpxnow.com/openid/v2/signin?token_url=' + RPX.callback_url;
+    },
+
+    callback_url : function() {
+        return "http://#{env['HTTP_HOST']}" + RPX.OPTIONS['callback_path'];
+    },
+
+    get_credentials : function(token) {
+        u = URI.parse(RPX_LOGIN_URL)
+        req = Net::HTTP::Post.new(u.path)
+        req.set_form_data({:token => token, :apiKey => OPTIONS[:api_key], :format => 'json', :extended => 'true'})
+        http = Net::HTTP.new(u.host,u.port)
+        http.use_ssl = true if u.scheme == 'https'
+        json = JSON.parse(http.request(req).body)
+        
+        raise LoginFailedError, "Cannot log in. Try another account! #{json.inspect}" unless json['stat'] == 'ok'
+        return json;
+    },
+    
+    initialize : function() { // app, *options
+        @app = app
+        OPTIONS.merge! options.pop
+    }
+};
+
+exports.handler = function(err,req,res,foo) {
+    // Check to see if the cookie is there in the session
+    if( RPX.check_session_for_authentication( req ) ) {
+        next();        
+    }
+    else {
+        RPX.
+    }
+
+},
+    
