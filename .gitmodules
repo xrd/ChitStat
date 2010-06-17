@@ -1,3 +1,9 @@
 [submodule "node-chat"]
 	path = node-chat
 	url = git://github.com/scottgonzalez/node-chat
+[submodule "node-lib/haml-js"]
+	path = node-lib/haml-js
+	url = git://github.com/creationix/haml-js.git
+[submodule "node-lib/express"]
+	path = node-lib/express
+	url = git://github.com/visionmedia/express.git

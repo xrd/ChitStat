@@ -4,13 +4,15 @@ var sys = require( 'sys' ),
     chat = require('server'),
     router = require("router");
 
-exports.start = function(passThrough) {
+var fs = require('fs');
+
+exports.handle = function handle(err, req, res, next) {
     sys.puts( "Starting server" );
     
     // create chat server
     var chatServer = chat.createServer();
-    chatServer.listen(8010);
-
+    //  chatServer.listen(8010);
+    
     // create a channel and log all activity to stdout
     chatServer.addChannel({
 	basePath: "/chat"
@@ -23,5 +25,4 @@ exports.start = function(passThrough) {
     });
     
     chatServer.passThru("/", passThrough );
-
 }
