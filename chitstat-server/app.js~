@@ -40,7 +40,7 @@ module.exports = new Connect.Server([
     {filter: "body-decoder"},
     {provider: "pubsub", route: "/stream", logic: Backend},
     {filter: "conditional-get"},
-    {filter: "cache"},
+    //{filter: "cache"},
     {filter: "gzip"},
     //{provider: "cache-manifest", root: root},
     {provider: "static", root: root}

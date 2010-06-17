@@ -26,7 +26,7 @@ var Backend = {
     },
     publish: function (message, callback) {
         subscribers.forEach(function (subscriber) {
-            //sys.puts( "Sending message" );
+            sys.puts( "Sending message" + message['message'] );
             subscriber.send(message);
         });
         callback();
@@ -35,7 +35,7 @@ var Backend = {
 
 
 module.exports = new Connect.Server([
-    {filter: "log"},
+    //{filter: "log"},
     {filter: "response-time"},
     {filter: "body-decoder"},
     {provider: "pubsub", route: "/stream", logic: Backend},

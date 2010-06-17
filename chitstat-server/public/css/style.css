@@ -1,6 +1,6 @@
 body {
     background: #333;
-    color: #fff;
+    color: black;
     font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
 }
 #holder {
@@ -20,4 +20,21 @@ body {
 }
 #copy a {
     color: #fff;
+}
+
+.chat-messages {
+overflow: auto;
+}
+
+.chat-messages .message .nick,.body {
+display: inline;
+}
+
+.chat-messages .message .nick {
+font-weight: bold;
+padding-right: 30px;
+}
+
+.system-messages {
+margin-bottom: 5px;
 }

@@ -16,8 +16,10 @@ function loadLayout() {
 	$('.south').animate({height: 'toggle'}, {duration: 500, complete: relayout, step: relayout});
     });
 
-    var myNewFlow = new ContentFlow('rendered', { reflectionHeight: 0, circularFlow: false, verticalFlow: true } ) ;
+}
 
+function loadContentFlow() {
+    var myNewFlow = new ContentFlow('rendered', { reflectionHeight: 0 } ) ;
 }
 
 function loadAutocomplete() {
