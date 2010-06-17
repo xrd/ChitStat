@@ -15,6 +15,13 @@ function loadLayout() {
     $('#toggle-north').click(function () {
 	$('.north').animate({height: 'toggle'}, {duration: 500, complete: relayout, step: relayout});
     });
+
+    $('#toggle-west').click(function () {
+	$('.west').animate({width: 'toggle'}, {duration: 500, complete: relayout, step: relayout});
+    });
+    $('#toggle-east').click(function () {
+	$('.east').animate({width: 'toggle'}, {duration: 500, complete: relayout, step: relayout});
+    });
     
     $('#toggle-south').click(function () {
 	$('.south').animate({height: 'toggle'}, {duration: 500, complete: relayout, step: relayout});
@@ -42,7 +49,6 @@ function receiveMessage( data, success ) {
         console.log( "Got something." );
         JSON.parse(data).forEach(function (message) {
             for (var id in message) {
-                // circles[id].attr(message[id]);
                 console.log( message['message'] )
                 addToChat( message );
             };
@@ -60,6 +66,8 @@ function sendChat( item ) {
     var nick = $('.nick').val();
     $.post('/stream', { message : msg, nick : nick }, onMessageSent );
     console.log( "Got a chat!" );
+    $('.chat').find(':text').val('');
+    $('.chat').find(':text').focus();
 }
 
 function onMessageSent(data,success) {

@@ -72,6 +72,10 @@
       .west {
       width: 200px;;
       }
+
+      .east {
+      width: 200px;;
+      }
       
       .south {
       height: 150px;
@@ -87,16 +91,15 @@
     <div class="system-messages">
     <button id="toggle-north">Visualizations</button>
     <button id="toggle-south">Chat Input</button>
-    <button id="toggle-east">Participants</button>
+    <button id="toggle-west">Participants</button>
+    <button id="toggle-east">History</button>
     <span class="notifier">&nbsp;</span>
     </div>
 
 
     <div class="layout {layout: {type: 'border', hgap: 3, vgap: 3}}">
       <div class="center">
-	Center
         <div class="chat-messages">
-          
         </div>
       </div>
       <div class="north">
@@ -123,16 +126,22 @@
           </div>
         </div>
       </div>
-      <div class="south chat">
-        <input type="hidden" class='nick' name='nick'>
-        Enter chat:  
-        <input type="text">
-        <input class="send-chat" type="submit" name="Send Message">
-      </div>
 
       <div class="west">
         Participants
       </div>
+
+      <div class="east">
+        History
+      </div>
+
     </div>
+
+    <div class="chat"> <!--  class="south chat" -->
+      <input type="hidden" class='nick' name='nick'>
+      <input type="text" class="message">
+      <input class="send-chat" type="submit" name="Send Message">
+    </div>
+
   </body>
 </html>

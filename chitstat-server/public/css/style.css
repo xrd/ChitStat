@@ -24,6 +24,8 @@ body {
 
 .chat-messages {
 overflow: auto;
+text-align: left;
+margin: 20px;
 }
 
 .chat-messages .message .nick,.body {
@@ -37,4 +39,19 @@ padding-right: 30px;
 
 .system-messages {
 margin-bottom: 5px;
+}
+
+.chat { 
+position: absolute;
+bottom: 0px;
+margin: 0 auto;
+text-align: center;
+z-index: 10000;
+background: #323232;
+color: white;
+width: 100%;
+}
+
+.chat .message {
+width: 400px;
 }
