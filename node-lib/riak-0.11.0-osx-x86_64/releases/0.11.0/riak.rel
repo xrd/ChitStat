@@ -1,0 +1,16 @@
+%% rel generated at {2010,6,9} {12,36,51}
+{release,{"riak","0.11.0"},
+         {erts,"5.7.5"},
+         [{kernel,"2.13.5"},
+          {stdlib,"1.16.5"},
+          {sasl,"2.1.9"},
+          {crypto,"1.6.4"},
+          {runtime_tools,"1.8.3"},
+          {erlang_js,"0.3"},
+          {mochiweb,"0.02"},
+          {webmachine,"1.6.1"},
+          {luke,"0.1"},
+          {bitcask,"1.0.1"},
+          {riak_core,"0.11.0"},
+          {riak_kv,"0.11.0"}]}.
+

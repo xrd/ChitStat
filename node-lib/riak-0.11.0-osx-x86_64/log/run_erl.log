@@ -1,0 +1,8 @@
+run_erl [42954] Thu Jun 24 01:08:24 2010
+Args before exec of shell:
+run_erl [42954] Thu Jun 24 01:08:24 2010
+argv[0] = sh
+run_erl [42954] Thu Jun 24 01:08:24 2010
+argv[1] = -c
+run_erl [42954] Thu Jun 24 01:08:24 2010
+argv[2] = exec /Users/xrdawson/chitstat/node-lib/riak-0.11.0-osx-x86_64/bin/riak console

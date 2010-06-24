@@ -1,0 +1,500 @@
+   29  pwd
+   30  ls
+   31  node-lib/connect/bin/connect test/connect-test
+   32  pwd
+   33  cd chitstat-server/
+   34  ../node-lib/connect/bin/connect app
+   35  ../node-lib/connect/bin/connect app
+   36  ../node-lib/connect/bin/connect app
+   37  ../node-lib/connect/bin/connect app
+   38  ../node-lib/connect/bin/connect app
+   39  ../node-lib/connect/bin/connect app
+   40  ../node-lib/connect/bin/connect app
+   41  ../node-lib/connect/bin/connect app
+   42  ../node-lib/connect/bin/connect app
+   43  ../node-lib/connect/bin/connect app
+   44  ../node-lib/connect/bin/connect app
+   45  cd chitstat/
+   46  git status
+   47  git commit -m "Added chitstat server stuff"
+   48  git status
+   49  git add --patch
+   50  git status
+   51  git commit -m "Much better CSS, resize on layout to make sure scrolling is proper for chat messages window"
+   52  find . | grep '~'
+   53  for x in `find . | grep '~'`; do git rm $x; done
+   54  git status
+   55  git commit -m "Removed emacs temp files"
+   56  cp ~/wovenmedia/cdn/.gitignore .
+   57  git status
+   58  git add .gitignore 
+   59  git commit -m "Added gitignore"
+   60  git status
+   61  rm chitstat-server/public/style.css 
+   62  fg
+   63  ../node-lib/connect/bin/connect app
+   64  ifc
+   65  ifconfig 
+   66  ping yahoo.com
+   67  ifconfig 
+   68  ping yahoo.com
+   69  ping yahoo.com
+   70  ifconfig 
+   71  adb
+   72  adb
+   73  lsusb
+   74  which lsusb
+   75  cd chitstat/
+   76  find . | grep jquery | grep ui
+   77  cd ..
+   78  cd wovenmedia/
+   79  find . | grep jquery | grep ui
+   80  pwd
+   81  cp ./cdn/public/stylesheets/jquery-ui-1.7.2.custom.css
+   82  cp ./cdn/public/stylesheets/jquery-ui-1.7.2.custom.css ../chitstat/chitstat-server/public/css/.
+   83  cp cdn/public/javascripts/jquery-ui-1.7.2.custom.min.js ../chitstat/chitstat-server/public/javascript/.
+   84  fg
+   85  pwd
+   86  find . | grep "\.css"
+   87  for x in `find . | grep "\.css"`; do grep scroll | grep auto; done
+   88  for x in `find . | grep "\.css"`; do grep scroll $x  | grep auto; done
+   89  for x in `find . | grep "\.css"`; do grep scroll $x; done
+   90  fg
+   91  fg
+   92  find . | grep cache.manifest
+   93  pwd
+   94  cd chitstat/
+   95  ls
+   96  cd test/
+   97  ls
+   98  cd 
+   99  cd outreach/
+  100  ls
+  101  mkdir cached
+  102  cd cached/
+  103  <html lang="en" manifest="cache.manifest">
+  104  <head>
+  105  mkdir public
+  106  emacs public/index.html
+  107  pwd
+  108  ~/chitstat/node-lib/connect/bin/connect app
+  109  fg
+  110  ~/chitstat/node-lib/connect/bin/connect app
+  111  fg
+  112  ls
+  113  pwd
+  114  ls ../Outreach/videos/
+  115  ls
+  116  cd public/
+  117  ln -s ../../Outreach/videos .
+  118  ls -l
+  119  fgfg
+  120  fg
+  121  ls videos
+  122  ls videos/meerkats_tn.mov 
+  123  fg
+  124  fg
+  125  pwd
+  126  ../node-lib/connect/bin/connect app
+  127  cd ch
+  128  cd chitstat/
+  129  ls
+  130  ls test/
+  131  emacs test/foo.js
+  132  ls node-lib/connect/lib/connect/
+  133  fg
+  134  node-lib/connect/bin/connect test/connect-test.js
+  135  node-lib/connect/bin/connect test/connect-test
+  136  fg
+  137  ls node-lib/connect/examples/hello-world/lib/
+  138  less node-lib/connect/examples/hello-world/lib/connect
+  139  fg
+  140  ls
+  141  node-lib/connect/bin/connect node-lib/connect/examples/hello-world/app
+  142  node-lib/connect/bin/connect node-lib/connect/examples/hello-world/app
+  143  fg
+  144  fg
+  145  pwd
+  146  ls
+  147  ls node-lib/connect/
+  148  ls node-lib/connect/examples/
+  149  ls node-lib/connect/examples/node/app.js 
+  150  less node-lib/connect/examples/node/app.js 
+  151  fg
+  152  ls
+  153  cd node-lib/
+  154  ls
+  155  cd connect/
+  156  ls
+  157  cd examples/
+  158  ls
+  159  cd hello-world/
+  160  ls
+  161  ./lib/connect app
+  162  ls lib/connect
+  163  ../../bin/connect app
+  164  ls
+  165  less run.js 
+  166  fg
+  167  pwd
+  168  cd ..
+  169  cd ..
+  170  pwd
+  171  cd ..
+  172  cd ..
+  173  cd ..
+  174  ls
+  175  cd chitstat/
+  176  ls
+  177  node-lib/connect/bin/connect test/run
+  178  fg
+  179  node-lib/connect/bin/connect test/run
+  180  node test/run.js
+  181  node test/run.js
+  182  less test/connect-test.js
+  183  fg
+  184  node test/run.js
+  185  fg
+  186  node test/run.js
+  187  fg
+  188  node test/run.js
+  189  fg
+  190  node test/run.js
+  191  fg
+  192  node test/run.js
+  193  fg
+  194  less test/connect-test.js
+  195  node test/run.js
+  196  fg
+  197  node test/run.js
+  198  fg
+  199  grep -i http.host node-lib/* -r
+  200  grep -i http-host node-lib/* -r
+  201  grep -i http_host node-lib/* -r
+  202  grep -i host node-lib/* -r
+  203  fg
+  204  pwd
+  205  fg
+  206  pwd
+  207  cd node-lib/connect/examples/
+  208  ls
+  209  ../bin/connect multitouch/app
+  210  cd multitouch/
+  211  ../../bin/connect app
+  212  fg
+  213  pwd
+  214  cd ../../../
+  215  ls
+  216  cd ..
+  217  ls
+  218  ls chitstat-server/
+  219  cd chitstat-server/
+  220  ../node-lib/connect/bin/connect app
+  221  fg
+  222  git status
+  223  fg
+  224  pwd
+  225  cd public/
+  226  ls
+  227  cd css/
+  228  ln -s jquery-ui-1.7.2.custom.css jquery-ui.css
+  229  fg
+  230  pwd
+  231  cd ../javascript/
+  232  ls
+  233  ln -s jquery-ui-1.7.2.custom.min.js jquery-ui.js
+  234  fg
+  235  git status
+  236  pwd
+  237  cd ../../
+  238  cd ..
+  239  git status
+  240  git add --patch
+  241  git status
+  242  git add node-lib/
+  243  git add bin/
+  244  git add server
+  245  git status
+  246  git add lib/
+  247  git add app
+  248  git add server-lib
+  249  git add test
+  250  git commit -m "Added a bunch of junk, made it work off local JS files rather than google code hosting"
+  251  git status
+  252  git add chitstat-server/
+  253  fg
+  254  grep scroll * -r
+  255  grep scroll * -r | grep css
+  256  grep scroll * -r | grep css | grep auto
+  257  clear
+  258  grep scroll * -r | grep css | grep auto
+  259  grep scroll * -r | grep "\.css" | grep auto
+  260  clear
+  261  fg
+  262  grep ajax ~/wovenmedia/cdn/* -r
+  263  fg
+  264  pwd
+  265  cd chitstat-server/
+  266  ls
+  267  cd public/
+  268  ls
+  269  git mv style.css css/.
+  270  fg
+  271  find . | grep "\.css"
+  272  fg
+  273  git add --patch
+  274  git commit -m "Added history item, better animations"
+  275  fg
+  276  pwd
+  277  git status
+  278  git diff
+  279  cd chitstat/
+  280  ls
+  281  cd node-lib/
+  282  ls
+  283  ls haml-js/
+  284  ls haml-js/README.markdown 
+  285  less haml-js/README.markdown 
+  286  ls
+  287  less foo.txt 
+  288  ls node-chat/
+  289  ls
+  290  cd express/
+  291  ls
+  292  cd examples/
+  293  ls
+  294  less chat/app.js 
+  295  pwd
+  296  ls
+  297  ls upload/
+  298  pwd
+  299  ls
+  300  cd ..
+  301  node examples/coffee-upload/app.coffee 
+  302  less examples/coffee-upload/app.coffee 
+  303  ls examples/coffee-upload/public/
+  304  ls examples/coffee-upload/public/javascripts/app.js 
+  305  less examples/coffee-upload/public/javascripts/app.js 
+  306  ls
+  307  pwd
+  308  ls examples/
+  309  ls examples/upload/
+  310  node -p 4000 examples/upload/app.js 
+  311  man node
+  312  less examples/upload/app.js 
+  313  man express
+  314  ls
+  315  pwd
+  316  ls lib/
+  317  ls lib/express.js 
+  318  less lib/express.js 
+  319  less lib/express/http.js 
+  320  ls
+  321  man popen
+  322  man popen
+  323  fg
+  324  fg
+  325  pwd
+  326  which node
+  327  ls .nvm/
+  328  ls .nvm/v0.1.97/
+  329  ls .nvm/v0.1.97/share/
+  330  ls .nvm/v0.1.97/share/man/
+  331  man nod
+  332  man node
+  333  ls
+  334  cd chitstat/
+  335  ls
+  336  grep POST * -r
+  337  less node-lib/node-chat/web/nodechat.js 
+  338  grep POST * -r | LESS
+  339  grep POST * -r | less
+  340  find . | grep -i cache
+  341  less chitstat/tmp/cache/
+  342  ls chitstat/tmp/cache/
+  343  less node-lib/connect/lib/connect/providers/cache-manifest.js 
+  344  ls
+  345  find . | grep cache.manifest
+  346  cd ..
+  347  find . | grep cache.manifest
+  348  less cache.manifest 
+  349  less index.html 
+  350  grep cache *
+  351  grep cache.manifest *
+  352  less ManheimTestOutput.txt 
+  353  file mbox 
+  354  less mbox 
+  355  ls
+  356  ls whyigive/
+  357  cd outreach/
+  358  ls
+  359  cd Outreach
+  360  ls
+  361  less index.html 
+  362  pwd
+  363  cd ..
+  364  cd ..
+  365  ls
+  366  rm chris-*.xml
+  367  less simone.txt 
+  368  rm simone.txt 
+  369  ls
+  370  fg
+  371  fg
+  372  sudo gem install curb
+  373  ls /var/tmp/
+  374  ulimit -n 512
+  375  brew install riak
+  376  git clone git://github.com/mxcl/homebrew.git
+  377  ruby -e "$(curl -fsS http://gist.github.com/raw/436471/install_homebrew.rb)"
+  378  ruby -e "$(curl -fsS http://gist.github.com/raw/436471/install_homebrew.rb)"
+  379  brew brew install riak
+  380  brew
+  381  brew install riak
+  382  port install erlang
+  383  sudo port install erlang
+  384  erl -v
+  385  ls
+  386  ls
+  387  cd Riak/
+  388  ls
+  389  cd ../chitstat/node-lib/
+  390  ls
+  391  cd ripple/
+  392  ls
+  393  less README.textile 
+  394  rails --version
+  395  java -v
+  396  java -version
+  397  pwd
+  398  cd outreach/Outreach
+  399  git pull
+  400  ls
+  401  cd ../
+  402  cd By
+  403  pwd
+  404  cd ..
+  405  cd Atmtag/
+  406  ls
+  407  cd atmtag/
+  408  ls
+  409  git pull
+  410  cd ../
+  411  pwd
+  412  cd ..
+  413  cd chitstat/
+  414  ls
+  415  git status
+  416  git pull
+  417  git pull origin master
+  418  git push
+  419  pwd
+  420  cd ..
+  421  ls
+  422  cd chitstat/
+  423  ls
+  424  cd server-lib/
+  425  ls
+  426  cd node-li
+  427  cd ../node-lib/
+  428  ls
+  429  git clone git://github.com/seancribbs/ripple.git
+  430  curl -O http://downloads.basho.com/riak/riak-0.11/riak-0.11.0-osx-x86_64.tar.gz
+  431  ls /tmp/
+  432   ls -l /tmp/
+  433  ps auwx | grep port
+  434  ls /usr/local/tmp
+  435  lsof | grep port
+  436  lsof | grep tcl
+  437  lsof | grep erl
+  438  lsof | grep tgz
+  439  lsof | grep tar
+  440  ls
+  441  ls riak-0.11.0-osx-x86_64.tar.gz 
+  442  tar xzf riak-0.11.0-osx-x86_64.tar.gz 
+  443  ls
+  444  cd riak-0.11.0-osx-x86_64
+  445  ls
+  446  ls ./bin/riak
+  447  file ./bin/riak
+  448  less ./bin/riak
+  449  pwd
+  450  ls
+  451  ./bin/riak stop
+  452  vi etc/app.config 
+  453  ./bin/riak start
+  454  ps auwx | grep erl
+  455  curl -v http://127.0.0.1:8091/riak/test/doc2
+  456  curl -v http://127.0.0.1:8092/riak/test/doc2
+  457  less etc/app.config 
+  458  curl -v http://127.0.0.1:8098/riak/test/doc2
+  459  curl -v http://127.0.0.1:8098/riak
+  460  curl -v -X PUT -d '{"bar":"baz"}' -H "Content-Type: application/json" -H "X-Riak-Vclock"
+  461  curl -v -X PUT -d '{"bar":"baz"}' -H "Content-Type: application/json" -H "X-Riak-Vclock" http://localhost:8098/riak
+  462  cd Riak/
+  463  ls
+  464  less Basic+Cluster+Setup.html 
+  465  pwd
+  466  ls
+  467  ifconfig 
+  468  hg clone https://appengine-jruby.googlecode.com/hg/ appengine-jruby
+  469  sudo gem install appengine-sdk
+  470  sudo gem install jruby-rack
+  471  port search hg
+  472  port search mercurial
+  473  sudo port install mercurial
+  474   sudo port install python_select
+  475    sudo port install python_select
+  476  sudo python_select python26
+  477  abd
+  478  adb
+  479  nvm list
+  480  sudo gem install google-appengine
+  481  hg clone https://appengine-jruby.googlecode.com/hg/ appengine-jruby
+  482  ls
+  483  mv appengine-jruby/ Downloads/.
+  484  cd Downloads/
+  485  cd appengine-jruby/
+  486  ls
+  487  pwd
+  488  cd
+  489  cd RealTimeFight/
+  490  ls
+  491  cd rtf
+  492  git pull
+  493  git pull origin master
+  494  ifconfig 
+  495  ping yahoo.com
+  496  ping yahoo.com
+  497  ping yahoo.com
+  498  ping yahoo.com
+  499  ping yahoo.com
+  500  ssh -D 9999 vivoh.com
+  501  curl -H "Accept: text/plain" http://127.0.0.1:8091/stats
+  502  curl -H "Accept: text/plain" http://127.0.0.1:8098/stats
+  503  curl -X PUT HTTP://127.0.0.1:8091/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary ~/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg 
+  504  curl -X PUT HTTP://127.0.0.1:8098/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary ~/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg 
+  505  curl -X PUT HTTP://127.0.0.1:8098/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary @~/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg 
+  506  # curl -X PUT HTTP://127.0.0.1:8098/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary @/Users/xrdawson/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg 
+  507  pwd
+  508  curl -X PUT HTTP://127.0.0.1:8098/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary @/Users/xrdawson/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg 
+  509  cp /Users/xrdawson/RealTimeFight/rtf/rails/public/images/fighters/Anthony_Johnson.jpg  image.jpg
+  510  curl -X PUT HTTP://127.0.0.1:8098/riak/images/1.jpg -H "Content-type: image/jpeg" --data-binary @image.jpg
+  511  file image.jpg 
+  512   curl -v -X PUT -d '{"bar":"baz"}' -H "Content-Type: application/json" -H "X-Riak-Vclock: a85hYGBgzGDKBVIszMk55zKYEhnzWBlKIniO8mUBAA==" http://127.0.0.1:8091/riak/test/doc?returnbody=true
+  513   curl -v -X PUT -d '{"bar":"baz"}' -H "Content-Type: application/json" -H "X-Riak-Vclock: a85hYGBgzGDKBVIszMk55zKYEhnzWBlKIniO8mUBAA==" http://127.0.0.1:8098/riak/test/doc?returnbody=true
+  514   curl -v -X PUT -d '{"bar2":"baz2"}' -H "Content-Type: application/json" -H "X-Riak-Vclock: a85hYGBgzGDKBVIszMk55zKYEhnzWBlKIniO8mUBAA==" http://127.0.0.1:8098/riak/test/doc?returnbody=true
+  515   curl -v -X PUT -d '{"barsdad":"bazasdasda2"}' -H "Content-Type: application/json" -H "X-Riak-Vclock: a85hYGBgzGDKBVIszMk55zKYEhnzWBlKIniO8mUBAA==" http://127.0.0.1:8098/riak/test/doc2?returnbody=true
+  516  curl -v -d 'this is a test' -H "Content-Type: text/plain" http://127.0.0.1:8091/riak/test
+  517  curl -v -d 'this is a test' -H "Content-Type: text/plain" http://127.0.0.1:8098/riak/test
+  518  curl -v -X DELETE http://localhost:8089/riak/test/KgJLwDG1wx1JC17EuVxToU0MVw0
+  519  curl -v -X DELETE http://localhost:8098/riak/test/KgJLwDG1wx1JC17EuVxToU0MVw0
+  520  curl -v -X PUT -H "Content-Type: application/json" -d '{"props":{"n_val":5}}' http://127.0.0.1:8091/riak/test
+  521  curl -v -X PUT -H "Content-Type: application/json" -d '{"props":{"n_val":5}}' http://127.0.0.1:8098/riak/test
+  522  curl -v http://127.0.0.1:8091/riak/test
+  523  curl -v http://127.0.0.1:8098/riak/test
+  524  curl -v http://127.0.0.1:8098/riak/test/doc2
+  525  pwd
+  526  history 
+  527  pwd
+  528  history > chitstat/node-lib/riak_commands.history.txt
