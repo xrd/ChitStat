@@ -46,12 +46,9 @@ function addToChat(message) {
 
 function receiveMessage( data, success ) {
     if( success ) {
-        console.log( "Got something." );
         JSON.parse(data).forEach(function (message) {
-            for (var id in message) {
-                console.log( message['message'] )
-                addToChat( message );
-            };
+            console.log( "Parsed message, inserting." );
+            addToChat( message );
         });
         setTimeout(connectChatStream, 50 );
     }

@@ -25,6 +25,7 @@ var cache = {};
  */
 
 function Subscriber(req, res) {
+    sys.puts( "ID: " + req.socket.remoteAddress + req.socket.remotePort );
     var id = req.socket.remoteAddress + req.socket.remotePort;
     var me = this;
     if (cache[id]) {
