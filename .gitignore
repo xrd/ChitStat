@@ -17,3 +17,4 @@ lib/vlcrunner/build
 lib/vlcrunner/build.xml
 vendor/plugins/haml/init.rb
 node-lib/riak*/data
+node-lib/riak*/log

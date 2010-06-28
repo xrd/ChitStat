@@ -1,53 +1,38 @@
 require.paths.unshift("./lib");
+require.paths.unshift("./lib/connect/lib");
 var Connect = require('connect');
 var root = __dirname + "/public";
 var sys = require('sys');
 var chitstatdb = require('chitstatdb');
-
-
-var subscribers = [];
-
-var Backend = {
-    subscribe: function (subscriber) {
-        sys.puts( "Sub: " + subscriber );
-        if (subscribers.indexOf(subscriber) < 0) {
-            sys.puts( "Adding new subscriber, count: " + subscribers.length );
-            subscribers.push(subscriber);
-            if (subscriber.timer) {
-                clearTimeout(subscriber.timer);
-            }
-            subscriber.timer = setTimeout(function () {
-                subscriber.flush();
-            }, 1000);
-
-        }
-    },
-    unsubscribe: function (subscriber) {
-        var pos = subscribers.indexOf(subscriber);
-        if (pos >= 0) {
-            subscribers.slice(pos);
-        }
-    },
-    publish: function (message, callback) {
-        subscribers.forEach(function (subscriber) {
-            sys.puts( "Sending message" + message['message'] );
-            chitstatdb.store( message )
-            subscriber.send(message);
-        });
-        callback();
-    }
-};
+var user = require('user');
+var login = require('login');
+var subscriber = require('subscriber');
+var main = require('main');
+var MemoryStore = require('connect/middleware/session/memory').MemoryStore;
+var RPX = require( 'rpx' );
 
 chitstatdb.init();
+subscriber.backend.storage( chitstatdb );
 
-module.exports = new Connect.Server([
-    //{filter: "log"},
-    {filter: "response-time"},
-    {filter: "body-decoder"},
-    {provider: "pubsub", route: "/stream", logic: Backend},
-    {filter: "conditional-get"},
-    //{filter: "cache"},
-    {filter: "gzip"},
-    //{provider: "cache-manifest", root: root},
-    {provider: "static", root: root}
-]);
+// One minute
+var minute = 60000;
+
+var Server = module.exports = Connect.createServer(
+    Connect.logger(),
+    Connect.bodyDecoder(),
+    Connect.redirect(),
+    Connect.cookieDecoder(),
+    Connect.session({ store: new MemoryStore({ reapInterval: minute, maxAge: minute * 5 }) }),
+    Connect.flash(),
+    Connect.staticProvider( root )
+);
+
+Server.use("/", Connect.router( RPX.handler ) );
+Server.use("/stream",
+           Connect.bodyDecoder(),
+           Connect.pubsub(subscriber.backend)
+          );
+Server.use("/users/", Connect.router(user.handler));
+Server.use("/main", Connect.router(main.handler));
+Server.use('/login', Connect.router(login.handler) );
+
