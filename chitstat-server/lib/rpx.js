@@ -22,7 +22,7 @@ var RPX = {
 
     check_session_for_authentication : function(req) {
         sys.puts( "Checking for username" );
-        return '' != req.session.user;
+        return req && req.session && '' != req.session.user;
         //        req.cookies.
     },
 
@@ -37,7 +37,9 @@ var RPX = {
 
     get_credentials : function(token) {
         var client = http.createClient(80, RPX_HOST );
-        var request = client.request( 'POST', RPX_LOGIN_ROOT, { 'host': RPX_HOST } );
+        var data = { token : token, apiKey : apiKey, format : 'json', extended : true };
+
+        var request = client.request( 'POST', RPX_LOGIN_ROOT, { 'Content-Length' : data.length ); 
         // req.set_form_data({:token => token, :apiKey => OPTIONS[:api_key], :format => 'json', :extended => 'true'})
         // Post back this data above
         //request.
@@ -67,7 +69,7 @@ exports.handler = function(err,req,res,foo) {
         next();        
     }
     else {
-        RPX.redirect( '/login' );
+        res.redirect( '/login' );
     }
 
 }

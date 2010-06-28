@@ -7,3 +7,6 @@
 [submodule "node-lib/express"]
 	path = node-lib/express
 	url = git://github.com/visionmedia/express.git
+[submodule "node-lib/restler"]
+	path = node-lib/restler
+	url = git://github.com/danwrong/restler.git
