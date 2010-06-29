@@ -37,26 +37,34 @@ function callback_url() {
 
 function get_credentials(req,res,next) {
     var token = req.body.token;
+    post_with_credentials( token );
+}
+
+function post_with_credentials( token ) {
     sys.puts( "Token: " + token );
     var apiKey = options['apiKey'];
     var toPost = { token : token, apiKey : apiKey, format : 'json', extended : true };
     restler.post( RPX_HOST, { data : toPost } ).
-    addListener( 'complete', function(data) { on_credentials_received(data,req,res,next); } ).
-    addListener( 'error', function(error) { on_error(res) } );
+    addListener( 'complete', on_credentials_received ).
+    addListener( 'error', on_error );
 }
 
 function on_error(response) {
     sys.puts( "Something bad happened" );
 }
 
-function on_credentials_received(data,req,res,next) {
+function on_credentials_received(data) {
     sys.puts( "RESPONSE: " + data );
     if( 'ok' == data.stat ) {
         req.session.username = json.displayName;
-        next();
+        if( next ) {
+            next();
+        }
     }
     else {
-        req.redirect( 'login.html' );
+        if( req ) {
+            req.redirect( 'login.html' );
+        }
     }
 }
 
@@ -68,6 +76,11 @@ exports.config = function( key, value ) {
         options[key] = value;
     }
     return options[key];
+}
+
+exports.test_rpx = function( token, apiKey ) {
+    options['apiKey'] = apiKey;
+    get_credentials( token );
 }
 
 exports.handler = function(req,res,next) {
