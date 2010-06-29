@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+<title>ChitStat Login</title>
+</head>
+<body class='bp'>
+<div class='rpxlogin' style='display: none;'>
+<script>var base = '/rpx_login';</script>
+<script src='https://rpxnow.com/openid/v2/widget' type='text/javascript'></script>
+<script type='text/javascript'>
+  //<![CDATA[
+    RPXNOW.token_url = "http://localhost:3000" + base;
+    RPXNOW.realm = "chitstat";
+    RPXNOW.overlay = true;
+    RPXNOW.language_preference = 'en';
+  //]]>
+</script>
+
+</div>
+<div class='logincontainer' style='height: 600px; margin: 0pt auto; text-align: center; background-color: gray; padding: 50px;'>
+<h1>Welcome!</h1>
+<h1>
+<a class='rpxnow'>Please sign in to RealTimeFight.com</a>
+</h1>
+</div>
+
+</body>
+</html>
