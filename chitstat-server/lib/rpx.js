@@ -5,7 +5,7 @@ var restler = require( 'restler' );
 // Connect Middleware for integrating RPX Now into your application
 var RPX_HOST = 'http://rpxnow.com';
 var RPX_LOGIN_ROOT = "/api/v2/auth_info";
-var RPX_LOGIN_URL = "https=//rpxnow.com/api/v2/auth_info";
+var RPX_LOGIN_URL = "https://rpxnow.com/api/v2/auth_info";
 
 var options = {
     callback_path : '/login_completed',
@@ -17,10 +17,11 @@ var options = {
 };
 
 function is_authenticated(req) {
-    // sys.puts( "Checking for username" );
+    sys.puts( "Checking for username" );
     var rv = false;
-    if( !( req && req.session && !req.session.user ) ) {
-        // sys.puts( "Username: " + req.session.user );
+        sys.puts( "Username: " + req.session.username );
+    if( req && req.session && req.session.username ) {
+        sys.puts( "Username: " + req.session.username );
         rv = true;
     }
     return rv;
@@ -37,15 +38,15 @@ function callback_url() {
 
 function get_credentials(req,res,next) {
     var token = req.body.token;
-    post_with_credentials( token );
+    post_with_credentials( token, req, res, next );
 }
 
-function post_with_credentials( token ) {
+function post_with_credentials( token, req, res, next ) {
     sys.puts( "Token: " + token );
     var apiKey = options['apiKey'];
     var toPost = { token : token, apiKey : apiKey, format : 'json', extended : true };
-    restler.post( RPX_HOST, { data : toPost } ).
-    addListener( 'complete', on_credentials_received ).
+    restler.post( RPX_LOGIN_URL, { data : toPost } ).
+    addListener( 'complete', function credentialize(incoming) { on_credentials_received( incoming, req, res, next ); } ).
     addListener( 'error', on_error );
 }
 
@@ -53,18 +54,19 @@ function on_error(response) {
     sys.puts( "Something bad happened" );
 }
 
-function on_credentials_received(data) {
+function on_credentials_received(data, req, res, next) {
     sys.puts( "RESPONSE: " + data );
-    if( 'ok' == data.stat ) {
-        req.session.username = json.displayName;
-        if( next ) {
-            next();
-        }
+    json = JSON.parse( data );
+    if( 'ok' == json.stat ) {
+        sys.puts( "JSON Username: " + json.profile.displayName );
+        req.sessionStore.regenerate(req, function(err){
+            req.session.username = json.profile.displayName;
+            sys.puts( "Storing username: " + json.profile.displayName );
+        });
+        res.redirect( '/' );
     }
     else {
-        if( req ) {
-            req.redirect( 'login.html' );
-        }
+        res.redirect( 'login.html' );
     }
 }
 
@@ -80,7 +82,7 @@ exports.config = function( key, value ) {
 
 exports.test_rpx = function( token, apiKey ) {
     options['apiKey'] = apiKey;
-    get_credentials( token );
+    post_with_credentials( token );
 }
 
 exports.handler = function(req,res,next) {
@@ -100,7 +102,9 @@ exports.handler = function(req,res,next) {
         next();
     }
     else if( req.url == '/logout' ) {
-        req.session.username = undefined;
+        req.sessionStore.regenerate(req, function(err){
+            req.session.username = undefined;
+        });
         next();
     }
     else {
