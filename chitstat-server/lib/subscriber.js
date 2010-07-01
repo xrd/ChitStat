@@ -12,7 +12,7 @@ var Backend = {
     subscribe: function (subscriber) {
         sys.puts( "Sub: " + subscriber );
         if (subscribers.indexOf(subscriber) < 0) {
-            // sys.puts( "Adding new subscriber, count: " + subscribers.length );
+            sys.puts( "Adding new subscriber, count: " + subscribers.length );
             subscribers.push(subscriber);
             if (subscriber.timer) {
                 clearTimeout(subscriber.timer);
@@ -31,7 +31,7 @@ var Backend = {
     },
     publish: function (message, callback) {
         subscribers.forEach(function (subscriber) {
-            // sys.puts( "Sending message: " + message['message'] );
+            sys.puts( "Sending message: " + message['message'] );
             Backend.db.store( message );
             subscriber.send(message);
         });

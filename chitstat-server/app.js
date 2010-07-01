@@ -11,6 +11,10 @@ var MemoryStore = require('connect/lib/connect/middleware/session/memory').Memor
 var RPX = require( 'rpx' );
 
 RPX.config( 'apiKey', '8a860c7cedd91259efb6f2ffd2f6a14f394b79af' );
+RPX.config( 'ignorePaths', [ '/stylesheets/', '/images/', '/javascripts/' ] );
+RPX.config( 'entryPoint',  '/rpx_login' );
+RPX.config( 'logoutPoint',  '/logout' );
+RPX.config( 'loginPoint',  '/static/login.html' );
 
 chitstatdb.init();
 subscriber.backend.storage( chitstatdb );

@@ -1,0 +1,192 @@
+
+=CRASH REPORT==== 1-Jul-2010::00:33:28 ===
+  crasher:
+    initial call: memsup:init/1
+    pid: <0.110.0>
+    registered_name: memsup
+    exception exit: {emfile,[{erlang,open_port,
+                                     [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                      [stream]]},
+                             {os,start_port_srv_loop,2}]}
+      in function  gen_server:terminate/6
+    ancestors: [os_mon_sup,<0.107.0>]
+    messages: []
+    links: [<0.108.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 2584
+    stack_size: 24
+    reductions: 2637559
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    child_terminated
+     Reason:     {emfile,[{erlang,open_port,
+                                  [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                   [stream]]},
+                          {os,start_port_srv_loop,2}]}
+     Offender:   [{pid,<0.110.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 1-Jul-2010::00:33:28 ===
+  crasher:
+    initial call: memsup:init/1
+    pid: <0.5618.0>
+    registered_name: memsup
+    exception exit: {emfile,[{erlang,open_port,
+                                     [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                      [stream]]},
+                             {os,start_port_srv_loop,2}]}
+      in function  gen_server:terminate/6
+    ancestors: [os_mon_sup,<0.107.0>]
+    messages: []
+    links: [<0.108.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 377
+    stack_size: 24
+    reductions: 177
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    child_terminated
+     Reason:     {emfile,[{erlang,open_port,
+                                  [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                   [stream]]},
+                          {os,start_port_srv_loop,2}]}
+     Offender:   [{pid,<0.5618.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 1-Jul-2010::00:33:28 ===
+  crasher:
+    initial call: memsup:init/1
+    pid: <0.5621.0>
+    registered_name: memsup
+    exception exit: {emfile,[{erlang,open_port,
+                                     [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                      [stream]]},
+                             {os,start_port_srv_loop,2}]}
+      in function  gen_server:terminate/6
+    ancestors: [os_mon_sup,<0.107.0>]
+    messages: []
+    links: [<0.108.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 377
+    stack_size: 24
+    reductions: 201
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    child_terminated
+     Reason:     {emfile,[{erlang,open_port,
+                                  [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                   [stream]]},
+                          {os,start_port_srv_loop,2}]}
+     Offender:   [{pid,<0.5621.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 1-Jul-2010::00:33:28 ===
+  crasher:
+    initial call: memsup:init/1
+    pid: <0.5624.0>
+    registered_name: memsup
+    exception exit: {emfile,[{erlang,open_port,
+                                     [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                      [stream]]},
+                             {os,start_port_srv_loop,2}]}
+      in function  gen_server:terminate/6
+    ancestors: [os_mon_sup,<0.107.0>]
+    messages: []
+    links: [<0.108.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 377
+    stack_size: 24
+    reductions: 217
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    child_terminated
+     Reason:     {emfile,[{erlang,open_port,
+                                  [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                   [stream]]},
+                          {os,start_port_srv_loop,2}]}
+     Offender:   [{pid,<0.5624.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+
+
+=CRASH REPORT==== 1-Jul-2010::00:33:28 ===
+  crasher:
+    initial call: memsup:init/1
+    pid: <0.5627.0>
+    registered_name: memsup
+    exception exit: {emfile,[{erlang,open_port,
+                                     [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                      [stream]]},
+                             {os,start_port_srv_loop,2}]}
+      in function  gen_server:terminate/6
+    ancestors: [os_mon_sup,<0.107.0>]
+    messages: []
+    links: [<0.108.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 377
+    stack_size: 24
+    reductions: 233
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    child_terminated
+     Reason:     {emfile,[{erlang,open_port,
+                                  [{spawn,"/bin/sh -s unix:cmd 2>&1"},
+                                   [stream]]},
+                          {os,start_port_srv_loop,2}]}
+     Offender:   [{pid,<0.5627.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+
+
+=SUPERVISOR REPORT==== 1-Jul-2010::00:33:28 ===
+     Supervisor: {local,os_mon_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.5627.0>},
+                  {name,memsup},
+                  {mfa,{memsup,start_link,[]}},
+                  {restart_type,permanent},
+                  {shutdown,2000},
+                  {child_type,worker}]
+

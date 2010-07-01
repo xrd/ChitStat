@@ -17,11 +17,8 @@ var options = {
 };
 
 function is_authenticated(req) {
-    sys.puts( "Checking for username" );
     var rv = false;
-        sys.puts( "Username: " + req.session.username );
     if( req && req.session && req.session.username ) {
-        sys.puts( "Username: " + req.session.username );
         rv = true;
     }
     return rv;
@@ -42,7 +39,6 @@ function get_credentials(req,res,next) {
 }
 
 function post_with_credentials( token, req, res, next ) {
-    sys.puts( "Token: " + token );
     var apiKey = options['apiKey'];
     var toPost = { token : token, apiKey : apiKey, format : 'json', extended : true };
     restler.post( RPX_LOGIN_URL, { data : toPost } ).
@@ -55,13 +51,10 @@ function on_error(response) {
 }
 
 function on_credentials_received(data, req, res, next) {
-    sys.puts( "RESPONSE: " + data );
     json = JSON.parse( data );
     if( 'ok' == json.stat ) {
-        sys.puts( "JSON Username: " + json.profile.displayName );
         req.sessionStore.regenerate(req, function(err){
             req.session.username = json.profile.displayName;
-            sys.puts( "Storing username: " + json.profile.displayName );
         });
         res.redirect( '/' );
     }
@@ -86,22 +79,20 @@ exports.test_rpx = function( token, apiKey ) {
 }
 
 exports.handler = function(req,res,next) {
-    // sys.puts( "Well, what have we here: " + req.url );
-    if( req.url.substr( 0, "/stylesheets/".length ) == '/stylesheets/' || 
-        req.url.substr( 0, "/images/".length ) == '/images/' || 
-        req.url.substr( 0, "/javascripts/".length ) == '/javascripts/' ) {
-        sys.puts( "[Skipping static: " + req.url + "]" );
-        next();
+    ignore = options.ignorePaths;
+    for( x in ignore ) { 
+        if( req.url.substr( 0, ignore[x].length ) == ignore[x] ) {
+            next();
+        }
     }
-    else if( req.url == '/rpx_login' ) {
-       // sys.puts( "Inside the authenticator!" );
+    
+    if( req.url == options.entryPoint ) {
         get_credentials(req,res,next);
     }
-    else if( req.url == '/login.html' ) {
-        // sys.puts( "Need to log them in for: " + req.url );
+    else if( req.url == options.loginPoint ) {
         next();
     }
-    else if( req.url == '/logout' ) {
+    else if( req.url == options.logoutPoint ) {
         req.sessionStore.regenerate(req, function(err){
             req.session.username = undefined;
         });
@@ -110,11 +101,10 @@ exports.handler = function(req,res,next) {
     else {
         // Check to see if the cookie is there in the session
         if( is_authenticated(req) ) {
-            sys.puts( "Found username" );
             next();        
         }
         else {
-            res.redirect( '/login.html' );
+            res.redirect( options.loginPoint );
         }
     }
 }
