@@ -11,10 +11,11 @@ var MemoryStore = require('connect/lib/connect/middleware/session/memory').Memor
 var RPX = require( 'rpx' );
 
 RPX.config( 'apiKey', '8a860c7cedd91259efb6f2ffd2f6a14f394b79af' );
-RPX.config( 'ignorePaths', [ '/stylesheets/', '/images/', '/javascripts/' ] );
-RPX.config( 'entryPoint',  '/rpx_login' );
+RPX.config( 'ignorePaths', [ '/stylesheets', '/images', '/javascript', '/css' ] );
+RPX.config( 'reentryPoint',  '/rpx_login' );
 RPX.config( 'logoutPoint',  '/logout' );
-RPX.config( 'loginPoint',  '/static/login.html' );
+RPX.config( 'loginPage',  '/static/login.html' );
+//RPX.config( 'fakedAuthentication', true );
 
 chitstatdb.init();
 subscriber.backend.storage( chitstatdb );
@@ -34,8 +35,4 @@ var Server = module.exports = Connect.createServer(
 );
 
 Server.use("/stream", Connect.pubsub(subscriber.backend) );
-//Server.use("/users/", Connect.router(user.handler));
-//Server.use("/main", Connect.router(main.handler));
-//Server.use('/login', Connect.router(login.handler) );
-//Server.use("/status", Connect.router( RPX.handler ) );
 

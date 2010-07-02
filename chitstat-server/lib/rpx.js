@@ -16,12 +16,8 @@ var options = {
     name : 'default'
 };
 
-function is_authenticated(req) {
-    var rv = false;
-    if( req && req.session && req.session.username ) {
-        rv = true;
-    }
-    return rv;
+function isAuthenticated(req) {
+    return req && req.session && req.session.username;
 }
 
 // This method will return to sign in with the widget.
@@ -66,6 +62,17 @@ function on_credentials_received(data, req, res, next) {
 function initialize() {
 }
 
+function shouldFakeIt() {
+    return options.fakedAuthentication;
+}
+
+function fakeIt(req,res) {
+    req.sessionStore.regenerate(req, function(err){
+        req.session.username = ( req.body && req.body.fake_name ) ? req.body.fake_name : 'someFakeUsername';
+        res.redirect( '/' );
+    });
+}
+
 exports.config = function( key, value ) {
     if( value ) {
         options[key] = value;
@@ -79,32 +86,35 @@ exports.test_rpx = function( token, apiKey ) {
 }
 
 exports.handler = function(req,res,next) {
-    ignore = options.ignorePaths;
-    for( x in ignore ) { 
-        if( req.url.substr( 0, ignore[x].length ) == ignore[x] ) {
-            next();
-        }
-    }
-    
-    if( req.url == options.entryPoint ) {
+    if( req.url == options.reentryPoint ) {
         get_credentials(req,res,next);
     }
-    else if( req.url == options.loginPoint ) {
+    else if( req.url == options.loginPage ) {
         next();
     }
     else if( req.url == options.logoutPoint ) {
         req.sessionStore.regenerate(req, function(err){
             req.session.username = undefined;
+            res.redirect( options.loginPage );
         });
-        next();
     }
     else {
-        // Check to see if the cookie is there in the session
-        if( is_authenticated(req) ) {
+        if( isAuthenticated(req) ) {
             next();        
         }
-        else {
-            res.redirect( options.loginPoint );
+        else if( shouldFakeIt() ) {
+            fakeIt(req,res);
+        }
+        else  {
+            ignore = options.ignorePaths;
+            for( x in ignore ) { 
+                if( req.url.substr( 0, ignore[x].length ) == ignore[x] ) {
+                    next();
+                }
+            }
+            
+            // If we got here, then send to login page
+            res.redirect( options.loginPage );
         }
     }
 }

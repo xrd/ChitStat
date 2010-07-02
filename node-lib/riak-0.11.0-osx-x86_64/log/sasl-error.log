@@ -190,3 +190,99 @@
                   {shutdown,2000},
                   {child_type,worker}]
 
+
+=CRASH REPORT==== 1-Jul-2010::21:27:11 ===
+  crasher:
+    initial call: riak_kv_vnode:init/1
+    pid: <0.244.0>
+    registered_name: []
+    exception exit: {{badmatch,{error,emfile}},
+                     [{bitcask_fileops,create_file_loop,3},
+                      {bitcask,put,3},
+                      {riak_kv_bitcask_backend,put,3},
+                      {riak_kv_vnode,perform_put,3},
+                      {riak_kv_vnode,do_put,7},
+                      {riak_kv_vnode,active,2},
+                      {gen_fsm,handle_msg,7},
+                      {proc_lib,init_p_do_apply,3}]}
+      in function  gen_fsm:terminate/7
+    ancestors: [riak_kv_vnode_sup,riak_kv_sup,<0.98.0>]
+    messages: [{'$gen_event',
+                      {put,<0.5972.0>,
+                          {<<"messages">>,<<"ULNFybB83qTsQwXepZloe8tMEBk">>},
+                          {r_object,<<"messages">>,
+                              <<"ULNFybB83qTsQwXepZloe8tMEBk">>,
+                              [{r_content,
+                                   {dict,5,16,16,8,80,48,
+                                       {[],[],[],[],[],[],[],[],[],[],[],[],
+                                        [],[],[],[]},
+                                       {{[],[],
+                                         [[<<"Links">>]],
+                                         [],[],[],[],[],[],[],
+                                         [[<<"content-type">>,97,112,112,108,
+                                           105,99,97,116,105,111,110,47,106,
+                                           115,111,110],
+                                          [<<"X-Riak-VTag">>,54,84,55,49,107,
+                                           122,66,82,53,118,74,70,99,119,50,
+                                           100,85,49,79,74,98,88]],
+                                         [],[],
+                                         [[<<"X-Riak-Last-Modified">>|
+                                           {1278,16031,314199}]],
+                                         [],
+                                         [[<<"X-Riak-Meta">>]]}}},
+                                   <<"{\"message\":\"Dangy, dong.\",\"nick\":\"632549\"}">>}],
+                              [{<<3,32,51,178>>,{1,63445235231}}],
+                              {dict,1,16,16,8,80,48,
+                                  {[],[],[],[],[],[],[],[],[],[],[],[],[],[],
+                                   [],[]},
+                                  {{[],[],[],[],[],[],[],[],[],[],[],[],[],[],
+                                    [[clean|true]],
+                                    []}}},
+                              undefined},
+                          66481147,63445235231,
+                          [{returnbody,false}]}}]
+    links: [#Port<0.2811>,#Port<0.4634>,<0.100.0>,#Port<0.2809>]
+    dictionary: [{#Ref<0.0.0.1254>,
+                   {bc_state,
+                       "data/bitcask/1392993748081016843912887106182707253109560705024",
+                       fresh,undefined,
+                       [{filestate,read_only,
+                            "data/bitcask/1392993748081016843912887106182707253109560705024/1277642319.bitcask.data",
+                            1277642319,
+                            {file_descriptor,prim_file,{#Port<0.2811>,110}},
+                            undefined,0},
+                        {filestate,read_only,
+                            "data/bitcask/1392993748081016843912887106182707253109560705024/1277642400.bitcask.data",
+                            1277642400,
+                            {file_descriptor,prim_file,{#Port<0.2809>,109}},
+                            undefined,0}],
+                       2147483648,
+                       [{expiry_secs,-1},{read_write,true}],
+                       <<>>}}]
+    trap_exit: false
+    status: running
+    heap_size: 1597
+    stack_size: 24
+    reductions: 504158
+  neighbours:
+
+=SUPERVISOR REPORT==== 1-Jul-2010::21:27:11 ===
+     Supervisor: {local,riak_kv_vnode_sup}
+     Context:    child_terminated
+     Reason:     {{badmatch,{error,emfile}},
+                  [{bitcask_fileops,create_file_loop,3},
+                   {bitcask,put,3},
+                   {riak_kv_bitcask_backend,put,3},
+                   {riak_kv_vnode,perform_put,3},
+                   {riak_kv_vnode,do_put,7},
+                   {riak_kv_vnode,active,2},
+                   {gen_fsm,handle_msg,7},
+                   {proc_lib,init_p_do_apply,3}]}
+     Offender:   [{pid,<0.244.0>},
+                  {name,undefined},
+                  {mfa,{riak_kv_vnode,start_link,
+                                      [1392993748081016843912887106182707253109560705024]}},
+                  {restart_type,temporary},
+                  {shutdown,brutal_kill},
+                  {child_type,worker}]
+
