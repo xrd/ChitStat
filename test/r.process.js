@@ -20,12 +20,13 @@ function command(message) {
 
 commands = [
     // From http://flowingdata.com/2010/01/21/how-to-make-a-heatmap-a-quick-and-easy-solution/
-    'nba <- read.csv("ppg2008.csv", sep=",")',
+    'asasdadad',
+    'nba <- read.csv("public/ppg2008.csv", sep=",")',
     'nba <- nba[order(nba$PTS),]',
     'row.names(nba) <- nba$Name',
     'nba <- nba[,2:20]',
     'nba_matrix <- data.matrix(nba)',
-    'nba_heatmap <- heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))',
+    //'nba_heatmap <- heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))',
     'nba_heatmap <- heatmap(nba_matrix, Rowv=NA, Colv=NA, col = heat.colors(256), scale="column", margins=c(5,10))'
  ];
 

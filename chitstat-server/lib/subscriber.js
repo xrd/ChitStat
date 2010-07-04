@@ -57,8 +57,12 @@ var R = {
 
     start : function(callback) {
         var spawn = require('child_process').spawn;
-        R.r = spawn('R', [ '--no-save', '--verbose' ] ); //, [ '--no-restore', '--no-save', '--verbose' ]);
-        R.r.stderr.addListener('data', function( data ) {
+        // Seem to need interactive or the script dies after an error is received, like for bad input
+        R.r = spawn('R', [ '--no-save', '--verbose', '--interactive' ] ); 
+        R.r.stderr.addListener( 'data', function( data ) {
+            // sys.puts( "ERROR: " + data );
+        });
+        R.r.stderr.addListener( 'error', function( data ) {
             // sys.puts( "ERROR: " + data );
         });
         R.r.stdout.addListener( 'data', function( data ) {

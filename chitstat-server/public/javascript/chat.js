@@ -23,8 +23,7 @@ function sendChat( item ) {
     item.stopPropagation();
     var msg = $('.chat').find(':text').val();
     var nick = $('.nick').val();
-    $.post('/stream', { message : msg, nick : nick }, onMessageSent );
-    // console.log( "Got a chat!" );
+    $.post('/stream', { message : msg }, onMessageSent );
     $('.chat').find(':text').val('');
     $('.chat').find(':text').focus();
 }
@@ -37,16 +36,9 @@ function connectChatStream() {
     $.ajax( { type : 'GET', url : '/stream', success : receiveMessage, error : function() { setTimeout( connectChatStream, 10000 ); } } );
 }
 
-function randomName() {
-    $('.nick').val( parseInt( Math.random()* 1000000 ) );
-}
-
 function setupChat() {
     // Connect us to the server
     connectChatStream();
-
-    // create random name
-    randomName();
 
     // Send off a message when we say something
     $('.send-chat').click( sendChat );
