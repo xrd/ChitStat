@@ -37,7 +37,6 @@ var Backend = {
         subscribers.forEach(function (subscriber) {
             // add to the message
             message[ 'nick' ] = subscriber.req.session.username;
-            message[ 'type' ] = 'R';
             // do something with R
             if( 'R' == message.type ) {
                 R.command( message.message, subscriber.req.session.id );
@@ -55,22 +54,33 @@ exports.backend = Backend;
 var R = {
     r : undefined,
 
+    out : function(data) {
+        try {
+            sys.puts( "Data: " + data );
+        } catch( err ) {
+            sys.puts( "Some error oxcured" );
+        }
+    },
+    
     start : function(callback) {
         var spawn = require('child_process').spawn;
         // Seem to need interactive or the script dies after an error is received, like for bad input
         R.r = spawn('R', [ '--no-save', '--verbose', '--interactive' ] ); 
         R.r.stderr.addListener( 'data', function( data ) {
-            // sys.puts( "ERROR: " + data );
+            R.out(data);
+            sys.puts( "ERROR: " + data );
         });
         R.r.stderr.addListener( 'error', function( data ) {
-            // sys.puts( "ERROR: " + data );
+            R.out(data);
+            sys.puts( "ERROR: " + data );
         });
         R.r.stdout.addListener( 'data', function( data ) {
-            sys.puts( "R:" + data );
+            R.out(data);
             if( callback ) { callback(data); }
         });
 
         R.r.stdout.addListener( 'error', function( data ) {
+            R.out(data);
             sys.puts( "R (error):" + data );
             if( callback ) { callback(data); }
         });

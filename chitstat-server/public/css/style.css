@@ -28,6 +28,10 @@ text-align: left;
 margin: 20px;
 }
 
+.chat-messages .message .r-type {
+font-family: 'Arial';
+}
+
 .chat-messages .message .nick,.body {
 display: inline;
 }

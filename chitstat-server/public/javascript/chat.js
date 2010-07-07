@@ -1,15 +1,18 @@
+var currentCommandIndex = 0;
+var commands = [];
+var lastWasLt = false;
+
 function addToChat(message) {
+    var msgClass = 'R' == message['type' ] ? 'r-type' : '';
     $('.chat-messages').append( '<div class="message">' +
                                 '<div class="nick">' + message['nick'] + '</div>' +
-                                '<div class="body">' + message['message'] + "</div>" +
+                                '<div class="body ' + msgClass + '">' + message['message'] + "</div>" +
                                 "</div>" );
 }
 
 function receiveMessage( data, success ) {
-    console.log( "Received something" );
     if( success ) {
         JSON.parse(data).forEach(function (message) {
-            console.log( "Parsed message, inserting." );
             addToChat( message );
         });
         setTimeout(connectChatStream, 50 );
@@ -22,6 +25,8 @@ function receiveMessage( data, success ) {
 function sendChat( item ) {
     item.stopPropagation();
     var msg = $('.chat').find(':text').val();
+    commands.push( msg );
+    currentCommandIndex = commands.length;
     var nick = $('.nick').val();
     $.post('/stream', { message : msg }, onMessageSent );
     $('.chat').find(':text').val('');
@@ -32,7 +37,7 @@ function onMessageSent(data,success) {
     console.log( "Sent message" );
 }
 function connectChatStream() {
-    console.log( "Reconnecting to stream" );
+    // console.log( "Reconnecting to stream" );
     $.ajax( { type : 'GET', url : '/stream', success : receiveMessage, error : function() { setTimeout( connectChatStream, 10000 ); } } );
 }
 
@@ -42,4 +47,44 @@ function setupChat() {
 
     // Send off a message when we say something
     $('.send-chat').click( sendChat );
+
+    // capture keycodes
+    captureKeycodes();
+}
+
+function checkForMessageType( event ) {
+    // if we have a < followed by a - then we probably are using R
+    if( 45 == event.which ) {
+        if( lastWasLt ) {
+            $('.type').val('R');
+        }
+    }
+    
+    lastWasLt = ( 60 == event.which && event.shiftKey );
+}
+
+function captureKeycodes() {
+    $('.chat :text').keypress(function(event) {
+        // console.log( "Got an event!" );
+        if (event.keyCode == '13') {
+            sendChat( event );
+            event.preventDefault();
+        }
+        else if( true == event.ctrlKey && event.which == 38 ) {
+            // retrieve the earlier event
+            if( currentCommandIndex > 0 ) {
+                currentCommandIndex -= 1;
+                $('.chat :text' ).val( commands[currentCommandIndex] );
+            }
+        }
+        else if( true == event.ctrlKey && event.which == 40 ) {
+            // retrieve the later event
+            if( currentCommandIndex < commands.length ) {
+                currentCommandIndex += 1;
+                $('.chat :text' ).val( commands[currentCommandIndex] );
+            }
+        }
+        
+        checkForMessageType( event );
+    });
 }
