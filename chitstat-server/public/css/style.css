@@ -1,7 +1,7 @@
 body {
     background: #333;
     color: black;
-    font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+    font: 300 .7em "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
 }
 #holder {
     height: 480px;
@@ -13,7 +13,6 @@ body {
 }
 #copy {
     bottom: 0;
-    font: 300 .7em "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
     position: absolute;
     right: 1em;
     text-align: right;
@@ -29,7 +28,6 @@ margin: 20px;
 }
 
 .chat-messages .message .r-type {
-font-family: 'Arial';
 }
 
 .chat-messages .message .nick,.body {
@@ -58,4 +56,9 @@ width: 100%;
 
 .chat .message {
 width: 400px;
+}
+
+.participants li {
+list-style: none;
+list-style-type: none;
 }

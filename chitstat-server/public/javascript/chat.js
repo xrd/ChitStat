@@ -13,7 +13,8 @@ function addToChat(message) {
 function receiveMessage( data, success ) {
     if( success ) {
         JSON.parse(data).forEach(function (message) {
-            addToChat( message );
+            updateNicks( message['nicks'] );
+            addToChat( message['message'] );
         });
         setTimeout(connectChatStream, 50 );
     }
@@ -21,14 +22,23 @@ function receiveMessage( data, success ) {
         setTimeout(connectChatStream, 10000 );
     }
 }
+
+function updateNicks( nicks ) {
+    var ul = $('<ul></ul>');
+    $(nicks).each( function(index,item) {
+        ul.append( $('<li>'+item+'</li>') );
+    });
+    $('.participants ul').html( ul.html() );
+}
     
 function sendChat( item ) {
     item.stopPropagation();
     var msg = $('.chat').find(':text').val();
+    var type = $('.chat .type').val();
     commands.push( msg );
     currentCommandIndex = commands.length;
     var nick = $('.nick').val();
-    $.post('/stream', { message : msg }, onMessageSent );
+    $.post('/stream', { message : msg, type : type }, onMessageSent );
     $('.chat').find(':text').val('');
     $('.chat').find(':text').focus();
 }
