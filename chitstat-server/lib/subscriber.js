@@ -37,16 +37,18 @@ var Backend = {
         message[ 'nick' ] = username;
     },
 
-    runRCommand : function( message, session, callback ) {
+    dispatchCommand : function( message, session, callback ) {
         if( 'R' == message.type ) {
-            sys.puts( "Sending R command" );
             R.command( message.message, session, function(response) {
                 callback(response);
             } );
         }
+        else {
+            callback();
+        }
     },
 
-    publish : function (req, res, callback) { // message, callback) {
+    publish : function (req, res, callback) { 
         var message = req.body;
         // gather all the nicknames
         var nicks = [];
@@ -54,18 +56,25 @@ var Backend = {
             nicks.push( subscriber.req.session.username );
         });
         Backend.updateNicknameInMessage( message, req.session.username );
-
+        
         var fullMessage = {};
         fullMessage['message'] = message;
-        fullMessage['nicks'] = nicks;
+        fullMessage['timestamp'] = (new Date()).valueOf();
         // store the message
-        // Backend.db.store( fullMessage );
-        Backend.runRCommand( message, req.session.id, function(result) {
-            subscribers.forEach(function (subscriber) {
-                subscriber.send( fullMessage );
-            });
-            callback();
-        });
+        Backend.db.store( fullMessage );
+
+        // add the nicks later because we don't need to store this in the database
+        fullMessage['nicks'] = nicks;
+
+        Backend.dispatchCommand( message, 
+                                 req.session.id, 
+                                 function(result) {
+                                     subscribers.forEach(function (subscriber) {
+                                         subscriber.send( fullMessage );
+                                     });
+                                     //callback();
+                                 });
+        callback();
     }
 };
 
@@ -74,7 +83,7 @@ exports.backend = Backend;
 var R = {
     r : undefined,
     response_callback : undefined,
-
+    
     out : function(data) {
         try {
             sys.puts( "Data: " + data );
@@ -113,7 +122,7 @@ var R = {
     command : function(message,session, callback) {
         R.r.stdin.write( "png('" + session + '-' + (new Date()).valueOf() + ".png')\n");
         R.r.stdin.write(message+"\n");
-        R.response_callback = callback;
+        // R.response_callback = callback;
     }
     
 };

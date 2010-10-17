@@ -7,6 +7,7 @@ var login = require('login');
 var subscriber = require('subscriber');
 var main = require('main');
 var MemoryStore = require('connect/lib/connect/middleware/session/memory').MemoryStore;
+var upload = require('upload');
 require.paths.unshift('../node-lib/connect-rpx');
 require.paths.unshift('../node-lib/restler/lib');
 var RPX = require( 'rpx' );
@@ -41,4 +42,3 @@ var Server = module.exports = Connect.createServer(
 );
 
 Server.use("/stream", Connect.pubsub(subscriber.backend) );;
-

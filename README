@@ -1,9 +1,8 @@
-ChitStat is an attempt at building a collaborative R language environment.  Another way to say it, ChitStat is an R language REPL.  
-Or, ChitStat is a fun way to review R transcripts for learning and sharing.
+ChitStat is an attempt at building a collaborative R language environment.  Another way to say it, ChitStat is an R language REPL.  Or, ChitStat is a fun way to review R transcripts for learning and sharing.
 
 How you use it:
 
-* You login
+* You login using OpenID (Google, Yahoo!, Hotmail, etc.)
 * You either create a new room or enter an existing room
 * You can choose to enter an "R" command, which the backend interprets as a R command
 * You can choose to enter a chat command, which is simply a chat command
@@ -25,7 +24,9 @@ Why I Think This is Cool
 
 Technologies:
 
-* Built on top of node.js
-* Uses R in the backend
-* Uses the contentflow JS library
+* Built on top of node.js, http://nodejs.org/
+* Uses R in the backend: http://www.r-project.org/
+* RIAK for storage: http://basho.com
+* JanRain Engage for OpenID login:  http://www.janrain.com/, http://github.com/xrd/connect-rpx
+* Uses the contentflow JS library:  http://www.jacksasylum.eu/ContentFlow/
 

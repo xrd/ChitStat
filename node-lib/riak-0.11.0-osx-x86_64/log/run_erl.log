@@ -1,8 +1,8 @@
-run_erl [81340] Tue Jul  6 17:47:44 2010
+run_erl [97218] Tue Jul 20 16:59:47 2010
 Args before exec of shell:
-run_erl [81340] Tue Jul  6 17:47:44 2010
+run_erl [97218] Tue Jul 20 16:59:47 2010
 argv[0] = sh
-run_erl [81340] Tue Jul  6 17:47:44 2010
+run_erl [97218] Tue Jul 20 16:59:47 2010
 argv[1] = -c
-run_erl [81340] Tue Jul  6 17:47:44 2010
+run_erl [97218] Tue Jul 20 16:59:47 2010
 argv[2] = exec /Users/xrdawson/chitstat/node-lib/riak-0.11.0-osx-x86_64/bin/riak console
