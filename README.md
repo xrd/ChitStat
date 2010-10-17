@@ -30,4 +30,4 @@ Technologies:
 * JanRain Engage for OpenID login:  http://www.janrain.com/, http://github.com/xrd/connect-rpx
 * Uses the contentflow JS library:  http://www.jacksasylum.eu/ContentFlow/
 
-![ChitStat sample layout]http://github.com/xrd/ChitStat/raw/master/html/sample.png
+![ChitStat sample layout](http://github.com/xrd/ChitStat/raw/master/html/sample.png)
