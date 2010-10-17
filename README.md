@@ -30,4 +30,50 @@ Technologies:
 * JanRain Engage for OpenID login:  http://www.janrain.com/, http://github.com/xrd/connect-rpx
 * Uses the contentflow JS library:  http://www.jacksasylum.eu/ContentFlow/
 
+Bugs
+
+* Not really functional, just a proof of concept
+* Could be dangerous if someone entered a shell command and the R interpreter executed it
+* Need to fork a new R interpreter for each chat session
+* Better interpretation of what is an R command and what is a normal message.  Maybe anything is R unless we use a format like "user:  some message here" where we must specify a username, or "all:" for everyone in the room.  Then we could do away with the select menu.
+* Tricky to handle responses from the R interpreter since calculations could take a long time. Node.js asynchronous code could really help here.
+
+How To Run:
+(this needs a lot of work)
+* install node, connect, etc.
+* cd chitstat-server
+* ./connect &
+* cd ../node-lib/riak-0.11.0-osx-x86_64
+* ./bin/riak start
+
+Enjoy!  Of course, lots is broken right now.
+
+A sample transcript on the server side:
+
+...  (some server startup messages)
+
+Data: > 
+[riak-js] POST /riak/messages/
+[riak-js] POST /riak/messages/
+[riak-js] POST /riak/messages/
+Data: png('5d9f83d32c09a7590ca564b1796-1287300031187.png')
+
+Data: > a <- 
+Data: c(1,2,3,4)
+> 
+[riak-js] POST /riak/messages/
+Data: Error: unexpected symbol in "I just"
+
+Data: png('5d9f83d32c09a7590ca564b1796-1287300051201.png')
+> I just created a new array.
+> 
+[riak-js] POST /riak/messages/
+
+* We posted a few messages to the server.  
+* Then, I changed the message type to "R" and entered the command a <- c(1,2,3,4) which created an R vector on the server.  
+* I then accidentally forgot to switch back to "chat" type of message, and the server tried to interpret the message as an R command.  
+* Any time the server gets an R message it tries to create a new PNG with the output.  If the command did create a new PNG, we should have the server send it back and insert into the contentflow.
+* Oops.  Once I switched this back, the message is interpreted as a normal chat message and inserted into the chat.
+
 ![ChitStat sample layout](http://github.com/xrd/ChitStat/raw/master/html/sample.png)
+
