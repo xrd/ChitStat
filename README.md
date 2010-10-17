@@ -51,23 +51,22 @@ Enjoy!  Of course, lots is broken right now.
 A sample transcript on the server side:
 
 ...  (some server startup messages)
-
-Data: > 
-[riak-js] POST /riak/messages/
-[riak-js] POST /riak/messages/
-[riak-js] POST /riak/messages/
-Data: png('5d9f83d32c09a7590ca564b1796-1287300031187.png')
-
-Data: > a <- 
-Data: c(1,2,3,4)
-> 
-[riak-js] POST /riak/messages/
-Data: Error: unexpected symbol in "I just"
-
-Data: png('5d9f83d32c09a7590ca564b1796-1287300051201.png')
-> I just created a new array.
-> 
-[riak-js] POST /riak/messages/
+  Data: > 
+  [riak-js] POST /riak/messages/
+  [riak-js] POST /riak/messages/
+  [riak-js] POST /riak/messages/
+ Data: png('5d9f83d32c09a7590ca564b1796-1287300031187.png')
+  
+  Data: > a <- 
+  Data: c(1,2,3,4)
+  > 
+  [riak-js] POST /riak/messages/
+  Data: Error: unexpected symbol in "I just"
+  
+  Data: png('5d9f83d32c09a7590ca564b1796-1287300051201.png')
+  > I just created a new array.
+  > 
+  [riak-js] POST /riak/messages/
 
 * We posted a few messages to the server.  
 * Then, I changed the message type to "R" and entered the command a <- c(1,2,3,4) which created an R vector on the server.  
