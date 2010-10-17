@@ -38,15 +38,14 @@ Bugs
 * Better interpretation of what is an R command and what is a normal message.  Maybe anything is R unless we use a format like "user:  some message here" where we must specify a username, or "all:" for everyone in the room.  Then we could do away with the select menu.
 * Tricky to handle responses from the R interpreter since calculations could take a long time. Node.js asynchronous code could really help here.
 
-How To Run:
-(this needs a lot of work)
+How To Run (this needs a lot of work):
+
 * install node, connect, etc.
+* ./node-lib/riak-0.11.0-osx-x86_64/bin/riak start
 * cd chitstat-server
 * ./connect &
-* cd ../node-lib/riak-0.11.0-osx-x86_64
-* ./bin/riak start
 
-Enjoy!  Of course, lots is broken right now.
+Enjoy!  There is still a lot to be done.
 
 A sample transcript on the server side:
 
